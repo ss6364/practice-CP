@@ -1,5 +1,5 @@
-// SEA BATTLE
-//    https://codeforces.com/contest/1131/problem/A
+//  https://codeforces.com/contest/1203/problem/C
+// COMMON DEVISORS
 
 
 #include<bits/stdc++.h>
@@ -16,14 +16,24 @@ ll x=0,y=0,s=0,n=0,i=0;
 
 int main(){
     IOS;
-    ll w1,w2,h1,h2 ;
-    cin>>w1>>h1>>w2>>h2;
-    n = w1 + 2 + (2*h1) ;
-    s = w2 + 2 + (2*h2) ;
-    if(abs(w1-w2) > 0 ){
-    	n +=abs(w1-w2);
+    cin >> n;
+    ll a[n];
+    For(n){
+    	cin >> a[i];
+    }
+    ll gcd = a[0];
+    for (i=0;i<n;i++){
+    	gcd = __gcd(gcd,a[i]);
     }
 
-    cout<<n+s<<endl;
+    for (i=1; (i*i) <= gcd;i++){
+    	if (gcd % i == 0){
+    		x += 1;
+    		if (i != (gcd/i)){
+    			x+=1;
+    		}
+    	}
+    }
+    cout << x << endl;
     return 0;
 }
